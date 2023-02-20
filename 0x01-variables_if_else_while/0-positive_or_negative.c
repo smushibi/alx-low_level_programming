@@ -1,9 +1,11 @@
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-/* more headers goes there */
-#include <stdlib.h>
-/* betty style doc for function main goes there */
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
 int n;
@@ -24,3 +26,4 @@ printf("%d is zero\n", n);
 }
 return (0);
 }
+
