@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * prints the the alpahebt ten times,
- * followed by a new line
+ *  print_alphabet_x10 : prints the the alpahebt ten times,
+ *  
  */
 void print_alphabet_x10(void)
 {
