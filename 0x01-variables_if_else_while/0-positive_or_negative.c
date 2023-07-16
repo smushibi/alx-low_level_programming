@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
-#include <stdlib.h>
+#include <stdio.h>
 /**
  * main - Enter point
  * generates random numbers & print if a number is positive, zero or negative
