@@ -1,15 +1,17 @@
 #include <stdio.h>
 /**
- * main - Prints numbers 9-0 in reverse order
+ * main - Prints the lowercase alphabet in reverse order using an array
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
+char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 int i;
-for (i = 9; i >= 0; i--)
+for (i = sizeof(alphabet) - 2; i >= 0; i--)
 {
-putchar(i + '0');
+putchar(alphabet[i]);
 }
 putchar('\n');
-return (0);
+return 0;
 }
