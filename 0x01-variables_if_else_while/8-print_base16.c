@@ -7,7 +7,8 @@
 int main(void)
 {
 char alp[] = "0123456789abcdef";
-for (int i = 0; i < 16 ; i++)
+int i;
+for (i = 0; i < 16 ; i++)
 {
 putchar(alp[i]);
 }
