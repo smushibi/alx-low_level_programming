@@ -6,12 +6,12 @@
  */
 int main(void)
 {
-char digits[] = "0, 1, 2, 3, 4, 5, 6, 7, 8, 9";
-int i;
-for (i = 0; digits[i] != '\0'; i++)
+int digits[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+for (int i = 0; i < 10; i++)
 {
-if (digits[i] != ' ')
-putchar(digits[i]);
+putchar(digits[i] + '0');
+if (i != 9)
+putchar(',');
 }
 putchar('\n');
 return (0);
