@@ -13,5 +13,5 @@ for (i = sizeof(alphabet) - 2; i >= 0; i--)
 putchar(alphabet[i]);
 }
 putchar('\n');
-return 0;
+return (0);
 }
