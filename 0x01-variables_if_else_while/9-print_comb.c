@@ -11,7 +11,8 @@ int i;
 for (i = 0; i < 10; i++)
 {
 putchar(digits[i] + '0');
-if (i == 2 || i == 5 || i == 8) {
+if (i == 2 || i == 5 || i == 8)
+{
 putchar(' ');
 }
 }
