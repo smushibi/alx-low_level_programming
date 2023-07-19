@@ -5,26 +5,13 @@
  * followed by a new line
  * @n: print from this number
  */
-
-void print_to_98(int n)
+void print_from_n_to_98(int n)
 {
-if (n <= 98)
+printf("%d, ", n);
+for (int i = n + 1; i < 99; i++)
 {
-for (int i = n; i <= 98; i++)
-{
-printf("%d", i);
-if (i != 98)
-printf(", ");
+printf("%d, ", i);
 }
-}
-else
-{
-for (int i = n; i >= 98; i--)
-{
-printf("%d", i);
-if (i != 98)
-printf(", ");
-}
-}
-printf("\n");
+printf("%d\n", 98);
+return (0);
 }
