@@ -5,25 +5,26 @@
  * followed by a new line
  * @n: print from this number
  */
+
 void print_to_98(int n)
 {
 if (n <= 98)
 {
 for (int i = n; i <= 98; i++)
 {
-_putchar("%d", i);
+printf("%d", i);
 if (i != 98)
-_putchar(", ");
+printf(", ");
 }
 }
 else
 {
 for (int i = n; i >= 98; i--)
 {
-_putchar("%d", i);
+printf("%d", i);
 if (i != 98)
-_putchar(", ");
+printf(", ");
 }
 }
-_putchar("\n");
+printf("\n");
 }
