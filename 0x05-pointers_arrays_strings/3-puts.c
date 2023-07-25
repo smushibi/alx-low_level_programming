@@ -6,8 +6,5 @@
  */
 void _puts(char *str)
 {
-if (str[0] != '\0')
-{
 printf("%s\n", str);
-}
 }
