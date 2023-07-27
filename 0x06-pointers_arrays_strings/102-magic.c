@@ -2,11 +2,7 @@
 /**
  * main - Entry point of the program.
  *
- * Description:
- * This program demonstrates the "magic" challenge where we need to modify the
- * value of a[2] to 98 using a single line of code, adhering to certain constraints.
- * We utilize pointer arithmetic to accomplish this task.
- *
+ * Description:prints a[2] = 98
  * Return: Always 0 (Success)
  */
 int main(void)
