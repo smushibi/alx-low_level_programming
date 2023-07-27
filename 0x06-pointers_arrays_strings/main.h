@@ -1,0 +1,6 @@
+#ifndef HEADER_FILE_H
+#define HEADER_FILE_H
+int _putchar(char c);
+char *_strcat(char *dest, char *src);
+#endif 
+
