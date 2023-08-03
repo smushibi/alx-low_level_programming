@@ -4,20 +4,23 @@
  * @n: The number for which the square root is to be calculated.
  * Return: The natural square root of the number, or -1 if not found.
  */
-
 int _sqrt_recursion(int n)
 {
-int i;
 if (n <= 0)
 {
 return (-1);
 }
-for (i = 1; i * i <= n; i++)
+int approx = n / 2;
+while (approx * approx != n)
 {
-if (i * i == n)
+if (approx * approx < n)
 {
-return (i);
+approx++;
+}
+else
+{
+approx--;
 }
 }
-return (-1);
+return (approx);
 }
