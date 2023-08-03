@@ -6,14 +6,15 @@
  */
 int _sqrt_recursion(int n)
 {
+int approx;
 if (n <= 0)
 {
 return (-1);
 }
-int approx = n / 2;
-while (approx * approx != n)
+approx = n / 2;
+while (approx *approx != n)
 {
-if (approx * approx < n)
+if (approx *approx < n)
 {
 approx++;
 }
