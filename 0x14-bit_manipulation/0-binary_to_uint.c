@@ -1,5 +1,6 @@
 #include "main.h"
-#include <stdlib.h>
+#include <stdio.h>
+
 /**
  * binary_to_uint - Converts a binary string to an unsigned int.
  * @b: The binary string containing only '0' and '1' characters.
@@ -8,15 +9,17 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-unsigned int result = 0;
 if (b == NULL)
 return (0);
-while (*b)
+unsigned int result = 0;
+unsigned int bit_value = 1;
+int i;
+for (i = 0; b[i] != '\0'; i++)
 {
-if (*b != '0' && *b != '1')
+if (b[i] != '0' && b[i] != '1')
 return (0);
-result = result * 2 + (*b - '0');
-b++;
+result <<= 1;
+result += (b[i] - '0');
 }
 return (result);
 }
