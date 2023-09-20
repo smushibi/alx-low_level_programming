@@ -1,6 +1,5 @@
  * display_elf_header - Displays information contained in the ELF header
  * @filename: Path of the ELF file
- *
  * Description:
  * This function opens the specified ELF file, reads its header, and displays
  * relevant information including magic number, class, data format, version,
