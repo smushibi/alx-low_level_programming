@@ -2,81 +2,81 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <elf.h>
 
-
-/**
-* print_error - Print an error message to stderr and exit with status code 98.
-* @message: The error message to print.
-*/
-void print_error(const char *message)
-{
-
-dprintf(STDERR_FILENO, "%s\n", message);
-exit(98);
-}
-
-/**
-* read_elf_header - Reads and displays information from the ELF header.
-* @filename: The name of the ELF file to read.
-*/
-void read_elf_header(const char *filename)
-{
-
-int fd;
-
-Elf32_Ehdr elf_header;
-
-fd = open(filename, O_RDONLY);
-if (fd == -1)
-{
-print_error("Error: Unable to open file");
-}
-
-if (read(fd, &elf_header, sizeof(Elf32_Ehdr)) != sizeof(Elf32_Ehdr))
-{
-print_error("Error: Unable to read ELF header");
-}
-
-close(fd);
-
-
-printf("Magic: ");
-for (int i = 0; i < EI_NIDENT; i++)
-{
-
-printf("%02x ", elf_header.e_ident[i]);
-}
-printf("\n");
-
-printf("Class: %s\n",
-(elf_header.e_ident[EI_CLASS] == ELFCLASS64) ? "ELF64" : "ELF32");
-printf("Data: %s\n", (elf_header.e_ident[EI_DATA] == ELFDATA2LSB)
-? "2's complement, little endian" : "2's complement, big endian");
-
-printf("Version: %d (current)\n", elf_header.e_ident[EI_VERSION]);
-printf("OS/ABI: %d\n", elf_header.e_ident[EI_OSABI]);
-printf("ABI Version: %d\n", elf_header.e_ident[EI_ABIVERSION]);
-printf("Type: %d\n", elf_header.e_type);
-printf("Entry point address: %#lx\n", (unsigned long)elf_header.e_entry);
-
-}
+ssize_t read_textfile(const char *filename, size_t letters);
 
 /**
 * main - Entry point of the program.
 * @argc: The number of command-line arguments.
-* @argv: An array of strings containing the arguments.
-* Return: 0 on success, non-zero on failure.
+* @argv: An array of strings representing the command-line arguments.
+*
+* Return: 0 on success, 1 otherwise.
 */
 int main(int argc, char *argv[])
 {
 
+ssize_t result;
+
 if (argc != 2)
 {
-print_error("Usage: elf_header elf_filename");
+fprintf(stderr, "Usage: elf_header elf_filename\n");
+exit(1);
 }
 
-read_elf_header(argv[1]);
+result = read_textfile(argv[1], 100);
+if (result == 0)
+{
+fprintf(stderr, "Error: Unable to read file\n");
+exit(1);
+}
 
 return (0);
+}
+/**
+* read_textfile - Reads a text file and prints it to POSIX standard output.
+* @filename: The name of the file to read.
+* @letters: The number of letters it should read and print.
+*
+* Return: The actual number of letters it could read and print.
+*         If an error occurs, returns 0.
+*/
+ssize_t read_textfile(const char *filename, size_t letters)
+{
+
+int fd;
+
+char *buffer;
+
+ssize_t bytes_read, bytes_written;
+
+if (filename == NULL)
+return (0);
+
+fd = open(filename, O_RDONLY);
+if (fd == -1)
+return (0);
+
+buffer = malloc(sizeof(char) * letters);
+if (buffer == NULL)
+{
+close(fd);
+return (0);
+}
+
+bytes_read = read(fd, buffer, letters);
+close(fd);
+
+if (bytes_read == -1)
+{
+free(buffer);
+return (0);
+}
+
+bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+free(buffer);
+
+if (bytes_written != bytes_read)
+return (0);
+
+return (bytes_written);
 }
