@@ -1,15 +1,4 @@
-/*
-* File: copy.c
-* Author: ChatGPT
-* Description: This program copies the content of a file to another file.
-*              Usage: ./copy file_from file_to
-*              Exit Codes:
-*                - 97: Incorrect number of arguments
-*                - 98: Can't read from file_from or file does not exist
-*                - 99: Can't write to file_to or write failure
-*                - 100: Can't close file descriptor
-*/
-
+#include "main"
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
