@@ -54,7 +54,7 @@ while ((rbytes = read(from_fd, buffer, BUF_SIZE)) > 0)
 wbytes = write(to_fd, buffer, rbytes);
 if (wbytes == -1 || wbytes != rbytes)
 {
-	error_exit(99, "Error: Can't write to %s\n", argv[2]);
+error_exit(99, "Error: Can't write to %s\n", argv[2]);
 }
 }
 
@@ -88,5 +88,4 @@ void error_exit(int code, const char *msg, const char *file_name)
 dprintf(2, msg, file_name);
 exit(code);
 }
-
 
